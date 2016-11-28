@@ -1,0 +1,26 @@
+﻿@model SocialFly.Compensation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Compensation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompPay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompPay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CompId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

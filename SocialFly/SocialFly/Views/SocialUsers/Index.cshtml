@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SocialFly.SocialUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SocialMName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Compensation.CompPay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Follower.FollowerCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region.RegionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SocialMName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Compensation.CompPay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Follower.FollowerCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region.RegionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SociaLId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SociaLId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SociaLId })
+        </td>
+    </tr>
+}
+
+</table>

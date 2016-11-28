@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SocialBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="CompId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrandSocial">
+          <Key>
+            <PropertyRef Name="SocialId" />
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="SocialId" Type="int" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Compensation">
+          <Key>
+            <PropertyRef Name="CompId" />
+          </Key>
+          <Property Name="CompId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompPay" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Followers">
+          <Key>
+            <PropertyRef Name="FollowerId" />
+          </Key>
+          <Property Name="FollowerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FollowerCount" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostNum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SocialUser">
+          <Key>
+            <PropertyRef Name="SociaLId" />
+          </Key>
+          <Property Name="SociaLId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SocialMName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FollowerCountId" Type="int" Nullable="false" />
+          <Property Name="RegionId" Type="int" Nullable="false" />
+          <Property Name="CompId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <Association Name="FK_Brand_Compensation">
+          <End Role="Compensation" Type="Self.Compensation" Multiplicity="1" />
+          <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compensation">
+              <PropertyRef Name="CompId" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="CompId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brand_Posts">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrandSocial_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="BrandSocial" Type="Self.BrandSocial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="BrandSocial">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrandSocial_SocialUser">
+          <End Role="SocialUser" Type="Self.SocialUser" Multiplicity="1" />
+          <End Role="BrandSocial" Type="Self.BrandSocial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SocialUser">
+              <PropertyRef Name="SociaLId" />
+            </Principal>
+            <Dependent Role="BrandSocial">
+              <PropertyRef Name="SocialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialUser_Compensation">
+          <End Role="Compensation" Type="Self.Compensation" Multiplicity="1" />
+          <End Role="SocialUser" Type="Self.SocialUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compensation">
+              <PropertyRef Name="CompId" />
+            </Principal>
+            <Dependent Role="SocialUser">
+              <PropertyRef Name="CompId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialUser_Followers">
+          <End Role="Followers" Type="Self.Followers" Multiplicity="1" />
+          <End Role="SocialUser" Type="Self.SocialUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Followers">
+              <PropertyRef Name="FollowerId" />
+            </Principal>
+            <Dependent Role="SocialUser">
+              <PropertyRef Name="FollowerCountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialUser_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="SocialUser" Type="Self.SocialUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="SocialUser">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SocialBModelStoreContainer">
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BrandSocial" EntityType="Self.BrandSocial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compensation" EntityType="Self.Compensation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Followers" EntityType="Self.Followers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SocialUser" EntityType="Self.SocialUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Brand_Compensation" Association="Self.FK_Brand_Compensation">
+            <End Role="Compensation" EntitySet="Compensation" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brand_Posts" Association="Self.FK_Brand_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrandSocial_Brand" Association="Self.FK_BrandSocial_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="BrandSocial" EntitySet="BrandSocial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrandSocial_SocialUser" Association="Self.FK_BrandSocial_SocialUser">
+            <End Role="SocialUser" EntitySet="SocialUser" />
+            <End Role="BrandSocial" EntitySet="BrandSocial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialUser_Compensation" Association="Self.FK_SocialUser_Compensation">
+            <End Role="Compensation" EntitySet="Compensation" />
+            <End Role="SocialUser" EntitySet="SocialUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialUser_Followers" Association="Self.FK_SocialUser_Followers">
+            <End Role="Followers" EntitySet="Followers" />
+            <End Role="SocialUser" EntitySet="SocialUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialUser_Region" Association="Self.FK_SocialUser_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="SocialUser" EntitySet="SocialUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SocialBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="CompId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compensation" Relationship="Self.FK_Brand_Compensation" FromRole="Brand" ToRole="Compensation" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Brand_Posts" FromRole="Brand" ToRole="Posts" />
+          <NavigationProperty Name="SocialUsers" Relationship="Self.BrandSocial" FromRole="Brand" ToRole="SocialUser" />
+        </EntityType>
+        <EntityType Name="Compensation">
+          <Key>
+            <PropertyRef Name="CompId" />
+          </Key>
+          <Property Name="CompId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompPay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK_Brand_Compensation" FromRole="Compensation" ToRole="Brand" />
+          <NavigationProperty Name="SocialUsers" Relationship="Self.FK_SocialUser_Compensation" FromRole="Compensation" ToRole="SocialUser" />
+        </EntityType>
+        <EntityType Name="Follower">
+          <Key>
+            <PropertyRef Name="FollowerId" />
+          </Key>
+          <Property Name="FollowerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FollowerCount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SocialUsers" Relationship="Self.FK_SocialUser_Followers" FromRole="Followers" ToRole="SocialUser" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Brands" Relationship="Self.FK_Brand_Posts" FromRole="Posts" ToRole="Brand" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionId" />
+          </Key>
+          <Property Name="RegionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SocialUsers" Relationship="Self.FK_SocialUser_Region" FromRole="Region" ToRole="SocialUser" />
+        </EntityType>
+        <EntityType Name="SocialUser">
+          <Key>
+            <PropertyRef Name="SociaLId" />
+          </Key>
+          <Property Name="SociaLId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SocialMName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FollowerCountId" Type="Int32" Nullable="false" />
+          <Property Name="RegionId" Type="Int32" Nullable="false" />
+          <Property Name="CompId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Compensation" Relationship="Self.FK_SocialUser_Compensation" FromRole="SocialUser" ToRole="Compensation" />
+          <NavigationProperty Name="Follower" Relationship="Self.FK_SocialUser_Followers" FromRole="SocialUser" ToRole="Followers" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_SocialUser_Region" FromRole="SocialUser" ToRole="Region" />
+          <NavigationProperty Name="Brands" Relationship="Self.BrandSocial" FromRole="SocialUser" ToRole="Brand" />
+        </EntityType>
+        <Association Name="FK_Brand_Compensation">
+          <End Role="Compensation" Type="Self.Compensation" Multiplicity="1" />
+          <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compensation">
+              <PropertyRef Name="CompId" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="CompId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brand_Posts">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialUser_Compensation">
+          <End Role="Compensation" Type="Self.Compensation" Multiplicity="1" />
+          <End Role="SocialUser" Type="Self.SocialUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compensation">
+              <PropertyRef Name="CompId" />
+            </Principal>
+            <Dependent Role="SocialUser">
+              <PropertyRef Name="CompId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialUser_Followers">
+          <End Role="Followers" Type="Self.Follower" Multiplicity="1" />
+          <End Role="SocialUser" Type="Self.SocialUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Followers">
+              <PropertyRef Name="FollowerId" />
+            </Principal>
+            <Dependent Role="SocialUser">
+              <PropertyRef Name="FollowerCountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialUser_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="SocialUser" Type="Self.SocialUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionId" />
+            </Principal>
+            <Dependent Role="SocialUser">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandSocial">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+          <End Role="SocialUser" Type="Self.SocialUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SocialBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="Compensations" EntityType="Self.Compensation" />
+          <EntitySet Name="Followers" EntityType="Self.Follower" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
+          <EntitySet Name="SocialUsers" EntityType="Self.SocialUser" />
+          <AssociationSet Name="FK_Brand_Compensation" Association="Self.FK_Brand_Compensation">
+            <End Role="Compensation" EntitySet="Compensations" />
+            <End Role="Brand" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brand_Posts" Association="Self.FK_Brand_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Brand" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialUser_Compensation" Association="Self.FK_SocialUser_Compensation">
+            <End Role="Compensation" EntitySet="Compensations" />
+            <End Role="SocialUser" EntitySet="SocialUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialUser_Followers" Association="Self.FK_SocialUser_Followers">
+            <End Role="Followers" EntitySet="Followers" />
+            <End Role="SocialUser" EntitySet="SocialUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialUser_Region" Association="Self.FK_SocialUser_Region">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="SocialUser" EntitySet="SocialUsers" />
+          </AssociationSet>
+          <AssociationSet Name="BrandSocial" Association="Self.BrandSocial">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="SocialUser" EntitySet="SocialUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SocialBModelStoreContainer" CdmEntityContainer="SocialBEntities">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="SocialBModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="CompId" ColumnName="CompId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compensations">
+            <EntityTypeMapping TypeName="SocialBModel.Compensation">
+              <MappingFragment StoreEntitySet="Compensation">
+                <ScalarProperty Name="CompId" ColumnName="CompId" />
+                <ScalarProperty Name="CompPay" ColumnName="CompPay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Followers">
+            <EntityTypeMapping TypeName="SocialBModel.Follower">
+              <MappingFragment StoreEntitySet="Followers">
+                <ScalarProperty Name="FollowerId" ColumnName="FollowerId" />
+                <ScalarProperty Name="FollowerCount" ColumnName="FollowerCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="SocialBModel.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="PostNum" ColumnName="PostNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="SocialBModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SocialUsers">
+            <EntityTypeMapping TypeName="SocialBModel.SocialUser">
+              <MappingFragment StoreEntitySet="SocialUser">
+                <ScalarProperty Name="SociaLId" ColumnName="SociaLId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SocialMName" ColumnName="SocialMName" />
+                <ScalarProperty Name="FollowerCountId" ColumnName="FollowerCountId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="CompId" ColumnName="CompId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="BrandSocial" TypeName="SocialBModel.BrandSocial" StoreEntitySet="BrandSocial">
+            <EndProperty Name="Brand">
+              <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+            </EndProperty>
+            <EndProperty Name="SocialUser">
+              <ScalarProperty Name="SociaLId" ColumnName="SocialId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
