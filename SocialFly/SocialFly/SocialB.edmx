@@ -58,11 +58,12 @@
           </Key>
           <Property Name="SociaLId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SocialMName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SocailMName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FollowerCountId" Type="int" Nullable="false" />
           <Property Name="RegionId" Type="int" Nullable="false" />
           <Property Name="CompId" Type="int" Nullable="false" />
-          <Property Name="Image" Type="image" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image?" Type="image" />
         </EntityType>
         <Association Name="FK_Brand_Compensation">
           <End Role="Compensation" Type="Self.Compensation" Multiplicity="1" />
@@ -243,11 +244,12 @@
           </Key>
           <Property Name="SociaLId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SocialMName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SocailMName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FollowerCountId" Type="Int32" Nullable="false" />
           <Property Name="RegionId" Type="Int32" Nullable="false" />
           <Property Name="CompId" Type="Int32" Nullable="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image_" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Compensation" Relationship="Self.FK_SocialUser_Compensation" FromRole="SocialUser" ToRole="Compensation" />
           <NavigationProperty Name="Follower" Relationship="Self.FK_SocialUser_Followers" FromRole="SocialUser" ToRole="Followers" />
           <NavigationProperty Name="Region" Relationship="Self.FK_SocialUser_Region" FromRole="SocialUser" ToRole="Region" />
@@ -404,11 +406,12 @@
               <MappingFragment StoreEntitySet="SocialUser">
                 <ScalarProperty Name="SociaLId" ColumnName="SociaLId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SocialMName" ColumnName="SocialMName" />
+                <ScalarProperty Name="SocailMName" ColumnName="SocailMName" />
                 <ScalarProperty Name="FollowerCountId" ColumnName="FollowerCountId" />
                 <ScalarProperty Name="RegionId" ColumnName="RegionId" />
                 <ScalarProperty Name="CompId" ColumnName="CompId" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Image_" ColumnName="Image?" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

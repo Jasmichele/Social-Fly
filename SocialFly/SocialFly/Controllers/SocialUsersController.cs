@@ -50,7 +50,7 @@ namespace SocialFly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SociaLId,Name,SocialMName,FollowerCountId,RegionId,CompId,Image")] SocialUser socialUser)
+        public ActionResult Create([Bind(Include = "SociaLId,Name,SocailMName,FollowerCountId,RegionId,CompId,Email,Image_")] SocialUser socialUser)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace SocialFly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SociaLId,Name,SocialMName,FollowerCountId,RegionId,CompId,Image")] SocialUser socialUser)
+        public ActionResult Edit([Bind(Include = "SociaLId,Name,SocailMName,FollowerCountId,RegionId,CompId,Email,Image_")] SocialUser socialUser)
         {
             if (ModelState.IsValid)
             {

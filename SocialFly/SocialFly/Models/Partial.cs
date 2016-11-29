@@ -40,14 +40,17 @@ namespace SocialFly
 
     public class SocialUserMetaData
     {
+        [DisplayName("Social Bee")]
+        [Required(ErrorMessage = "Social Bee Required")]
+        public int SociaLId { get; set; }
         [DisplayName("Name")]
         [Required(ErrorMessage = "Name Required")]
         public string Name { get; set; }
         [DisplayName("Social Media Name")]
         [Required(ErrorMessage = "Social Media Name Required")]
-        public string SocialMName { get; set; }
+        public string SocailMName { get; set; }
         [DisplayName("Follower's")]
-        [Required(ErrorMessage = "Follower Amount Required")]
+        [Required(ErrorMessage = "Follower's Required")]
         public int FollowerCountId { get; set; }
         [DisplayName("Region")]
         [Required(ErrorMessage = "Region Required")]
@@ -55,7 +58,10 @@ namespace SocialFly
         [DisplayName("Compensation")]
         [Required(ErrorMessage = "Compensation Required")]
         public int CompId { get; set; }
-        public byte[] Image { get; set; }
+        [DisplayName("Email")]
+        [Required(ErrorMessage = "Email Required")]
+        public string Email { get; set; }
+        public byte[] Image_ { get; set; }
     }
 
     [MetadataType(typeof(CompMetaData))]

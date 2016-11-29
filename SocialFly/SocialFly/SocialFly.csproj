@@ -206,6 +206,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
     <Compile Include="Controllers\CompensationsController.cs" />
+    <Compile Include="Controllers\ConnectController.cs" />
     <Compile Include="Controllers\FollowersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -317,13 +318,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <EntityDeploy Include="SocialB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SocialB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="SocialB.edmx.diagram">
-      <DependentUpon>SocialB.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Regions\Create.cshtml" />
     <Content Include="Views\Regions\Delete.cshtml" />
     <Content Include="Views\Regions\Details.cshtml" />
@@ -354,9 +348,18 @@
     <Content Include="Views\SocialUsers\Details.cshtml" />
     <Content Include="Views\SocialUsers\Edit.cshtml" />
     <Content Include="Views\SocialUsers\Index.cshtml" />
+    <EntityDeploy Include="SocialB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SocialB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SocialB.edmx.diagram">
+      <DependentUpon>SocialB.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Connect\" />
+    <Folder Include="Views\DropDownList\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

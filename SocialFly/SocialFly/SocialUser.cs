@@ -22,11 +22,12 @@ namespace SocialFly
     
         public int SociaLId { get; set; }
         public string Name { get; set; }
-        public string SocialMName { get; set; }
+        public string SocailMName { get; set; }
         public int FollowerCountId { get; set; }
         public int RegionId { get; set; }
         public int CompId { get; set; }
-        public byte[] Image { get; set; }
+        public string Email { get; set; }
+        public byte[] Image_ { get; set; }
     
         public virtual Compensation Compensation { get; set; }
         public virtual Follower Follower { get; set; }
