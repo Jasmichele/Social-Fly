@@ -36,27 +36,31 @@ namespace SocialFly.Controllers
             string fol = form["Follower"].ToString();
             string com = form["Compensation"].ToString();
 
-            return View();
+            return RedirectToAction("GetUsers", new { rid = reg, fid = fol, cid = com });
         }
 
-        //public IEnumerable<SocialUser> GetUsers(int? rid, int? fid, int? cid)
-        //{
-        //    ConnectModel looking = new ConnectModel();
+        public ActionResult GetUsers(int? rid, int? fid, int? cid)
+        {
+          
+            var socialUsers = from su in db.SocialUsers
+                              select su;
+            var filteredUsers = socialUsers;
 
-        //    var socialUsers = from su in db.SocialUsers
-        //                      select su;
-        //    var filteredUsers = socialUsers;
+            int tempRid = Convert.ToInt32(rid);
+            int tempFid = Convert.ToInt32(fid);
+            int tempCid = Convert.ToInt32(cid);
 
-        //    if (rid != null)
-        //        filteredUsers = socialUsers.Where(s => s.RegionId == rid);
 
-        //    if (fid != null)
-        //        filteredUsers = socialUsers.Where(s => s.FollowerCountId == fid);
+            if (rid != null)
+                filteredUsers = socialUsers.Where(s => s.RegionId == tempRid);
 
-        //    if (cid != null)
-        //        filteredUsers = socialUsers.Where(s => s.CompId == cid);
+            if (fid != null)
+                filteredUsers = socialUsers.Where(s => s.FollowerCountId == tempFid);
 
-        //    return filteredUsers;
-        //}
+            if (cid != null)
+                filteredUsers = socialUsers.Where(s => s.CompId == tempCid);
+
+            return View(filteredUsers);
+        }
     }
 }
