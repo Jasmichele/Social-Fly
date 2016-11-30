@@ -16,22 +16,47 @@ namespace SocialFly.Controllers
             return View();
         }
 
-        public IEnumerable<SocialUser> GetByFilter(int? rid, int? fid, int? cid)
+        public ActionResult GetByFilter()
         {
-            var socialUsers = from su in db.SocialUsers
-                              select su;
-            var filteredUsers = socialUsers;
+            ConnectModel looking = new ConnectModel();
 
-            if (rid != null)
-                filteredUsers = socialUsers.Where(s => s.RegionId == rid);
+            SocialBEntities db = new SocialBEntities();
+            looking.Followers = db.Followers.ToList();
+            looking.Regions = db.Regions.ToList();
+            looking.Compensation = db.Compensations.ToList();
 
-            if (fid != null)
-                filteredUsers = socialUsers.Where(s => s.FollowerCountId == fid);
-
-            if (cid != null)
-                filteredUsers = socialUsers.Where(s => s.CompId == cid);
-
-             return filteredUsers;
+             return View(looking);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GetByFilter(FormCollection form)
+        {
+            string reg = form["Region"].ToString();
+            string fol = form["Follower"].ToString();
+            string com = form["Compensation"].ToString();
+
+            return View();
+        }
+
+        //public IEnumerable<SocialUser> GetUsers(int? rid, int? fid, int? cid)
+        //{
+        //    ConnectModel looking = new ConnectModel();
+
+        //    var socialUsers = from su in db.SocialUsers
+        //                      select su;
+        //    var filteredUsers = socialUsers;
+
+        //    if (rid != null)
+        //        filteredUsers = socialUsers.Where(s => s.RegionId == rid);
+
+        //    if (fid != null)
+        //        filteredUsers = socialUsers.Where(s => s.FollowerCountId == fid);
+
+        //    if (cid != null)
+        //        filteredUsers = socialUsers.Where(s => s.CompId == cid);
+
+        //    return filteredUsers;
+        //}
     }
 }

@@ -356,10 +356,10 @@
     <Content Include="SocialB.edmx.diagram">
       <DependentUpon>SocialB.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Connect\GetByFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Connect\" />
     <Folder Include="Views\DropDownList\" />
   </ItemGroup>
   <ItemGroup>
