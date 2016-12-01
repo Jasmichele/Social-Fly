@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
+    <Compile Include="Controllers\SocialAuthController.cs" />
     <Compile Include="Controllers\SocialUsersController.cs" />
     <Compile Include="Follower.cs">
       <DependentUpon>SocialB.tt</DependentUpon>
@@ -358,6 +359,7 @@
     </Content>
     <Content Include="Views\Connect\GetByFilter.cshtml" />
     <Content Include="Views\Connect\GetUsers.cshtml" />
+    <Content Include="Views\SocialAuth\Button.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
