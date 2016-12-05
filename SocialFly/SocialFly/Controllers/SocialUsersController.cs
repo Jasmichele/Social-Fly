@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using SocialFly.Models;
 using SocialFly;
 
 namespace SocialFly.Controllers
@@ -15,13 +16,17 @@ namespace SocialFly.Controllers
         private SocialBEntities db = new SocialBEntities();
 
         // GET: SocialUsers
+        [Authorize]
         public ActionResult Index()
         {
-            var socialUsers = db.SocialUsers.Include(s => s.Compensation).Include(s => s.Follower).Include(s => s.Region);
-            return View(socialUsers.ToList());
+            var socialUsers = from su in db.SocialUsers
+                              where su.Email == User.Identity.Name
+                              select su;
+            return View(socialUsers);
         }
 
         // GET: SocialUsers/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +42,7 @@ namespace SocialFly.Controllers
         }
 
         // GET: SocialUsers/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay");
@@ -45,24 +51,36 @@ namespace SocialFly.Controllers
             return View();
         }
 
+        // GET: SocialUsers/Create
+        [Authorize]
+        [HttpGet]
+        public ActionResult CreateSocial(SocialUser su)
+        {
+            ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay");
+            ViewBag.FollowerCountId = new SelectList(db.Followers, "FollowerId", "FollowerCount");
+            ViewBag.RegionId = new SelectList(db.Regions, "RegionId", "RegionName");
+            return View(su);
+        }
+
         // POST: SocialUsers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SociaLId,Name,SocailMName,FollowerCountId,RegionId,CompId,Email,Image_")] SocialUser socialUser)
+        [ActionName("CreateSocial")]
+        public ActionResult CreateSocialPost([Bind(Include = "SociaLId,Name,SocailMName,FollowerCountId,RegionId,CompId,Email,Image_")]SocialUser su)
         {
             if (ModelState.IsValid)
             {
-                db.SocialUsers.Add(socialUser);
+                db.SocialUsers.Add(su);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay", socialUser.CompId);
-            ViewBag.FollowerCountId = new SelectList(db.Followers, "FollowerId", "FollowerCount", socialUser.FollowerCountId);
-            ViewBag.RegionId = new SelectList(db.Regions, "RegionId", "RegionName", socialUser.RegionId);
-            return View(socialUser);
+            ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay", su.CompId);
+            ViewBag.FollowerCountId = new SelectList(db.Followers, "FollowerId", "FollowerCount", su.FollowerCountId);
+            ViewBag.RegionId = new SelectList(db.Regions, "RegionId", "RegionName", su.RegionId);
+            return View(su);
         }
 
         // GET: SocialUsers/Edit/5

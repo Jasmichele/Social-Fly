@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
+using System.Data;
+using System.Data.Entity;
+using System.Net;
+using SocialFly.Models;
+using SocialFly;
+
 using System.Web.Mvc;
 
 namespace SocialFly.Controllers
@@ -10,8 +17,10 @@ namespace SocialFly.Controllers
     {
         SocialBEntities db = new SocialBEntities();
         // GET: SocialAuth
+        [Authorize]
         public ActionResult Index()
         {
+            string userName = User.Identity.Name;
             return View();
         }
 
@@ -89,13 +98,37 @@ namespace SocialFly.Controllers
 
         public ActionResult Button()
         {
+            
             return View();
         }
-    }
 
-    [HttpPost]
-    public ActionResult Button(string brand, string social)
-    {
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Button(string brand, string social)
+        {
+            SocialBEntities db = new SocialBEntities();
+
+            if (brand != null)
+            {
+                Brand brandN = new Brand();
+
+                brandN.Email = User.Identity.Name;
+
+                return RedirectToAction("CreateBrand", "Brands", brandN);
+            }
+
+            if (social != null)
+            {
+                SocialUser sU = new SocialUser();
+
+                sU.Email = User.Identity.Name;
+
+                return RedirectToAction("CreateSocial", "SocialUsers", sU);
+            }
+
+            return null;
+        }
     }
 }

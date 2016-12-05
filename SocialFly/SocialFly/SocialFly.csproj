@@ -225,6 +225,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Partial.cs" />
+    <Compile Include="Models\Soc.cs" />
     <Compile Include="Post.cs">
       <DependentUpon>SocialB.tt</DependentUpon>
     </Compile>
@@ -350,6 +351,10 @@
     <Content Include="Views\SocialUsers\Details.cshtml" />
     <Content Include="Views\SocialUsers\Edit.cshtml" />
     <Content Include="Views\SocialUsers\Index.cshtml" />
+    <Content Include="Views\Connect\GetByFilter.cshtml" />
+    <Content Include="Views\Connect\GetUsers.cshtml" />
+    <Content Include="Views\SocialAuth\Button.cshtml" />
+    <Content Include="Views\SocialUsers\CreateSocial.cshtml" />
     <EntityDeploy Include="SocialB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SocialB.Designer.cs</LastGenOutput>
@@ -357,9 +362,7 @@
     <Content Include="SocialB.edmx.diagram">
       <DependentUpon>SocialB.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\Connect\GetByFilter.cshtml" />
-    <Content Include="Views\Connect\GetUsers.cshtml" />
-    <Content Include="Views\SocialAuth\Button.cshtml" />
+    <Content Include="Views\Brands\CreateBrand.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

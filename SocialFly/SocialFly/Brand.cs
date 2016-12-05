@@ -26,6 +26,7 @@ namespace SocialFly
         public string ProductDescription { get; set; }
         public int PostId { get; set; }
         public int CompId { get; set; }
+        public string Email { get; set; }
     
         public virtual Compensation Compensation { get; set; }
         public virtual Post Post { get; set; }
