@@ -341,11 +341,6 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\Brands\Create.cshtml" />
-    <Content Include="Views\Brands\Delete.cshtml" />
-    <Content Include="Views\Brands\Details.cshtml" />
-    <Content Include="Views\Brands\Edit.cshtml" />
-    <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\SocialUsers\Create.cshtml" />
     <Content Include="Views\SocialUsers\Delete.cshtml" />
     <Content Include="Views\SocialUsers\Details.cshtml" />
@@ -362,6 +357,11 @@
     <Content Include="SocialB.edmx.diagram">
       <DependentUpon>SocialB.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Brands\Create.cshtml" />
+    <Content Include="Views\Brands\Delete.cshtml" />
+    <Content Include="Views\Brands\Details.cshtml" />
+    <Content Include="Views\Brands\Edit.cshtml" />
+    <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Brands\CreateBrand.cshtml" />
   </ItemGroup>
   <ItemGroup>

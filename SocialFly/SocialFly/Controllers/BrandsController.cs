@@ -43,9 +43,6 @@ namespace SocialFly.Controllers
             ViewBag.PostId = new SelectList(db.Posts, "PostId", "PostNum");
             return View();
         }
-
-        [Authorize]
-        [HttpGet]
         public ActionResult CreateBrand(Brand brandN)
         {
             ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay");
@@ -56,21 +53,41 @@ namespace SocialFly.Controllers
         // POST: Brands/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //[ActionName("CreateBrand")]
+        //public ActionResult CreateBrandPost([Bind(Include = "BrandId,CompanyName,Product,ProductDescription,PostId,CompId")] Brand brandN)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Brands.Add(brandN);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay", brandN.CompId);
+        //    ViewBag.PostId = new SelectList(db.Posts, "PostId", "PostNum", brandN.PostId);
+        //    return View(brandN);
+        //}
+
+        // POST: Brands/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("CreateBrand")]
-        public ActionResult CreateBrandPost([Bind(Include = "BrandId,CompanyName,Product,ProductDescription,PostId,CompId")] Brand brandN)
+        public ActionResult CreateBrandPost([Bind(Include = "BrandId,CompanyName,Product,ProductDescription,PostId,CompId,Email")] Brand brand)
         {
             if (ModelState.IsValid)
             {
-                db.Brands.Add(brandN);
+                db.Brands.Add(brand);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay", brandN.CompId);
-            ViewBag.PostId = new SelectList(db.Posts, "PostId", "PostNum", brandN.PostId);
-            return View(brandN);
+            ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay", brand.CompId);
+            ViewBag.PostId = new SelectList(db.Posts, "PostId", "PostNum", brand.PostId);
+            return View(brand);
         }
 
         // GET: Brands/Edit/5
@@ -95,7 +112,7 @@ namespace SocialFly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BrandId,CompanyName,Product,ProductDescription,PostId,CompId")] Brand brand)
+        public ActionResult Edit([Bind(Include = "BrandId,CompanyName,Product,ProductDescription,PostId,CompId,Email")] Brand brand)
         {
             if (ModelState.IsValid)
             {

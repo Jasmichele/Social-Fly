@@ -15,7 +15,7 @@
           <Property Name="ProductDescription" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PostId" Type="int" Nullable="false" />
           <Property Name="CompId" Type="int" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="BrandSocial">
           <Key>
@@ -202,7 +202,7 @@
           <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
           <Property Name="CompId" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Compensation" Relationship="Self.FK_Brand_Compensation" FromRole="Brand" ToRole="Compensation" />
           <NavigationProperty Name="Post" Relationship="Self.FK_Brand_Posts" FromRole="Brand" ToRole="Posts" />
           <NavigationProperty Name="SocialUsers" Relationship="Self.BrandSocial" FromRole="Brand" ToRole="SocialUser" />
