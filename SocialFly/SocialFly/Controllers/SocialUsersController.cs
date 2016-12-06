@@ -22,11 +22,12 @@ namespace SocialFly.Controllers
             var socialUsers = from su in db.SocialUsers
                               where su.Email == User.Identity.Name
                               select su;
+    
             return View(socialUsers);
         }
 
         // GET: SocialUsers/Details/5
-        [Authorize]
+      
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,7 +39,12 @@ namespace SocialFly.Controllers
             {
                 return HttpNotFound();
             }
-            return View(socialUser);
+
+            ESoc su = new ESoc();
+            su.MyUser = socialUser;
+            su.Email = User.Identity.Name;
+
+            return View(su);
         }
 
         // GET: SocialUsers/Create

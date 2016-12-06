@@ -52,13 +52,16 @@ namespace SocialFly.Controllers
 
 
             if (rid != null)
-                filteredUsers = socialUsers.Where(s => s.RegionId == tempRid);
+                filteredUsers = filteredUsers.Where(s => s.RegionId == tempRid);
 
             if (fid != null)
-                filteredUsers = socialUsers.Where(s => s.FollowerCountId == tempFid);
+                filteredUsers = filteredUsers.Where(s => s.FollowerCountId == tempFid);
 
             if (cid != null)
-                filteredUsers = socialUsers.Where(s => s.CompId == tempCid);
+                filteredUsers = filteredUsers.Where(s => s.CompId == tempCid);
+
+
+           
 
             return View(filteredUsers);
         }

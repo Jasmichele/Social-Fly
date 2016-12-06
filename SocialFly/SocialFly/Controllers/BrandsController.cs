@@ -15,6 +15,7 @@ namespace SocialFly.Controllers
         private SocialBEntities db = new SocialBEntities();
 
         // GET: Brands
+        [Authorize]
         public ActionResult Index()
         {
             var brands = db.Brands.Include(b => b.Compensation).Include(b => b.Post);
@@ -22,6 +23,7 @@ namespace SocialFly.Controllers
         }
 
         // GET: Brands/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,12 +39,14 @@ namespace SocialFly.Controllers
         }
 
         // GET: Brands/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay");
             ViewBag.PostId = new SelectList(db.Posts, "PostId", "PostNum");
             return View();
         }
+        [Authorize]
         public ActionResult CreateBrand(Brand brandN)
         {
             ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay");
@@ -91,6 +95,7 @@ namespace SocialFly.Controllers
         }
 
         // GET: Brands/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -126,6 +131,7 @@ namespace SocialFly.Controllers
         }
 
         // GET: Brands/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

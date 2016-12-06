@@ -1,4 +1,4 @@
-﻿@model SocialFly.SocialUser
+﻿@model SocialFly.Models.ESoc
 
 @{
     ViewBag.Title = "Details";
@@ -11,64 +11,87 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.MyUser.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.MyUser.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SocailMName)
+            @Html.DisplayNameFor(model => model.MyUser.SocailMName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SocailMName)
+            @Html.DisplayFor(model => model.MyUser.SocailMName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.MyUser.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.MyUser.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Image_)
+            @Html.DisplayNameFor(model => model.MyUser.Image_)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image_)
+            @Html.DisplayFor(model => model.MyUser.Image_)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Compensation.CompPay)
+            @Html.DisplayNameFor(model => model.MyUser.Compensation.CompPay)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Compensation.CompPay)
+            @Html.DisplayFor(model => model.MyUser.Compensation.CompPay)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Follower.FollowerCount)
+            @Html.DisplayNameFor(model => model.MyUser.Follower.FollowerCount)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Follower.FollowerCount)
+            @Html.DisplayFor(model => model.MyUser.Follower.FollowerCount)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Region.RegionName)
+            @Html.DisplayNameFor(model => model.MyUser.Region.RegionName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Region.RegionName)
+            @Html.DisplayFor(model => model.MyUser.Region.RegionName)
         </dd>
 
     </dl>
 </div>
+
+<div class="form-group email-scc">
+    @Html.LabelFor(m => m.MyUser.Email, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.MyUser.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MyUser.Email)
+    </div>
+</div>
+
+<div class="form-group email-scc">
+    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+</div>
+<div>
+    <a href="https://www.instagram.com/@Model.MyUser.SocailMName/" target="_blank"> <img src="~/Content/images/instagram.jpeg" /></a>
+</div>
+<div>
+    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+</div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SociaLId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MyUser.SociaLId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
