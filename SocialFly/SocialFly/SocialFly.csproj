@@ -365,6 +365,7 @@
     <Content Include="Views\Brands\Edit.cshtml" />
     <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Brands\CreateBrand.cshtml" />
+    <Content Include="Views\SocialUsers\Sent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -59,7 +59,7 @@
             @Html.DisplayFor(modelItem => item.Region.RegionName)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", "SocialUsers", item.SociaLId )
+            @Html.ActionLink("Details", "Details", "SocialUsers", new { id = item.SociaLId }, null )
         </td>
     </tr>
 }

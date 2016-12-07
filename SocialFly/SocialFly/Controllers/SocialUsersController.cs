@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using SocialFly.Models;
 using SocialFly;
+using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace SocialFly.Controllers
 {
@@ -45,6 +47,48 @@ namespace SocialFly.Controllers
             su.Email = User.Identity.Name;
 
             return View(su);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Contact(ESoc email)
+        {
+
+           
+            ESoc su = new ESoc();
+            su = email;
+
+            if(ModelState.IsValid)
+            {
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                var message = new MailMessage();
+                message.To.Add(new MailAddress(su.MyUser.Email));
+                message.From = new MailAddress(su.Email);
+                message.Subject = "Contact";
+                message.Body = string.Format(body, su.Email, su.Message);
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "socialflyy@outlook.com",
+                        Password = "Sf05160581"
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp-mail.outlook.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    await smtp.SendMailAsync(message);
+                    return RedirectToAction("Sent");
+                }
+            }
+            return View(email);
+        }
+
+        public ActionResult Sent()
+        {
+            return View();
         }
 
         // GET: SocialUsers/Create
