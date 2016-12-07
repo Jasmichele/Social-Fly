@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SocialFly.SocialUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShowAll";
 }
 
-<h2>Index</h2>
+<h2>ShowAll</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
@@ -59,15 +59,11 @@
             @Html.DisplayFor(modelItem => item.Region.RegionName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SociaLId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SociaLId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SociaLId })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.SociaLId }) |*@
+            @Html.ActionLink("Details", "Details", "SocialUsers", new { id=item.SociaLId }, null) 
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.SociaLId })*@
         </td>
     </tr>
 }
 
 </table>
-
-<div>
-    @Html.ActionLink("See Brands", "ShowBrand", "Connect")
-</div>

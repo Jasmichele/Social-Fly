@@ -18,8 +18,10 @@ namespace SocialFly.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var brands = db.Brands.Include(b => b.Compensation).Include(b => b.Post);
-            return View(brands.ToList());
+            var brands = from su in db.Brands
+                         where su.Email == User.Identity.Name
+                         select su;
+            return View(brands);
         }
 
         // GET: Brands/Details/5
@@ -54,29 +56,6 @@ namespace SocialFly.Controllers
             return View(brandN);
         }
 
-        // POST: Brands/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //[ActionName("CreateBrand")]
-        //public ActionResult CreateBrandPost([Bind(Include = "BrandId,CompanyName,Product,ProductDescription,PostId,CompId")] Brand brandN)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Brands.Add(brandN);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    ViewBag.CompId = new SelectList(db.Compensations, "CompId", "CompPay", brandN.CompId);
-        //    ViewBag.PostId = new SelectList(db.Posts, "PostId", "PostNum", brandN.PostId);
-        //    return View(brandN);
-        //}
-
-        // POST: Brands/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("CreateBrand")]

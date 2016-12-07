@@ -50,7 +50,6 @@ namespace SocialFly.Controllers
             int tempFid = Convert.ToInt32(fid);
             int tempCid = Convert.ToInt32(cid);
 
-
             if (rid != null)
                 filteredUsers = filteredUsers.Where(s => s.RegionId == tempRid);
 
@@ -60,10 +59,23 @@ namespace SocialFly.Controllers
             if (cid != null)
                 filteredUsers = filteredUsers.Where(s => s.CompId == tempCid);
 
-
-           
-
             return View(filteredUsers);
+        }
+
+        public ActionResult ShowAll()
+        {
+            var socialUsers = from su in db.SocialUsers
+                              select su;
+
+            return View(socialUsers);
+        }
+
+        public ActionResult ShowBrand()
+        {
+            var brands = from b in db.Brands
+                         select b;
+
+            return View(brands);
         }
     }
 }
