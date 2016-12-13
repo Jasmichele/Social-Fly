@@ -257,7 +257,15 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\adamback.jpg" />
+    <Content Include="Content\images\Jelback.jpg" />
+    <Content Include="Content\images\jloback.jpg" />
+    <Content Include="Content\images\kly.jpg" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\meback.JPG" />
     <Content Include="Content\images\instagram.jpeg" />
+    <Content Include="Content\images\kamback.jpg" />
+    <Content Include="Content\images\Mercback.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -368,6 +376,7 @@
     <Content Include="Views\SocialUsers\Sent.cshtml" />
     <Content Include="Views\Connect\ShowAll.cshtml" />
     <Content Include="Views\Connect\ShowBrand.cshtml" />
+    <Content Include="Views\Connect\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

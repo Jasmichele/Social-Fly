@@ -4,10 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Bio</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm("Search", "Connect", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="text" name="search" id="search" />
+
+        <button type="submit">Search</button>
+    }
+    <button onclick="location.href='@Url.Action("GetByFilter", "Connect")'">Filter</button>
+    <button onclick="location.href='@Url.Action("ShowAll", "Connect")'">See All</button>
 </p>
 <table class="table">
     <tr>
@@ -63,9 +73,10 @@
 
 </table>
 
-<div>
+@*<div>
     @Html.ActionLink("Browse Social Bee's", "GetByFilter", "Connect")
 </div>
 <div>
     @Html.ActionLink("All Social Bee's", "ShowAll", "Connect")
-</div>
+</div>*@
+

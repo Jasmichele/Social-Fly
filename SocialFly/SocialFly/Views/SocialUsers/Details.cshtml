@@ -6,9 +6,9 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>SocialUser</h4>
-    <hr />
+<div class="socialD_left">
+    <h4>Social Bee</h4>
+    <div class="clear"></div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.MyUser.Name)
@@ -67,49 +67,59 @@
         </dd>
 
     </dl>
-</div>
-@using (Html.BeginForm("Details", "SocialUsers", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
 
-<div class="form-group email-scc">
-    @Html.LabelFor(m => m.MyUser.Email, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.MyUser.Email, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.MyUser.Email)
+    <div>
+        <a href="https://www.instagram.com/@Model.MyUser.SocailMName/" target="_blank"> <img src="~/Content/images/instagram.jpeg" /></a>
     </div>
-</div>
-
-<div class="form-group email-scc">
-    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.Email,  new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Email)
-    </div>
-</div>
-
-<div class="form-group email-scc">
-    @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.Message, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Email)
+    <div>
+        <a href="https://www.instagram.com" target="_blank">Instagram</a>
     </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Send" class="btn btn-default" />
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.MyUser.SociaLId }) |*@
+        @Html.ActionLink("Back to List", "ShowAll", "Connect")
+    </p>
+</div>
+
+<div class="socialD_right">
+
+    @using (Html.BeginForm("Details", "SocialUsers", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group email-scc">
+            @Html.LabelFor(m => m.MyUser.Email, "To:", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.MyUser.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.MyUser.Email)
+            </div>
         </div>
-    </div>
-</div>
-}
-<div>
-    <a href="https://www.instagram.com/@Model.MyUser.SocailMName/" target="_blank"> <img src="~/Content/images/instagram.jpeg" /></a>
-</div>
-<div>
-    <a href="https://www.instagram.com" target="_blank">Instagram</a>
-</div>
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MyUser.SociaLId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <div class="form-group email-scc">
+            @Html.LabelFor(m => m.Email, "From:", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        </div>
+
+        <div class="form-group email-scc">
+            @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Send" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+    
+    </div>
+
+<div class="clear"></div>

@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: black;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,77 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  background-color: floralwhite;
+}
+
+.image{
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+}
+
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #eed3d7;
+}
+
+.navbar{
+    background-color: cadetblue;
+    color: white;
+}
+
+.font-color-white{
+    color: red;
+}
+
+.unslider-nav ol li.unslider-active, .unslider-nav ol li{
+    width:20px!important;
+    height:20px!important;
+    color:#000!important;
+    border:1px solid #000!important;
+
+}
+
+.my-slider img{
+    width:250px;
+    height:auto;
+}
+
+.unslider ul{
+        text-align:center;
+
+}
+
+.my-slider .instagram img{
+    width:700px;
+    height:auto;
+}
+
+.socialD_left{
+   display:inline-block;
+   width:400px;
+   float:left;
+}
+
+.socialD_right{
+    display: inline-block;
+    width: 400px;
+    margin-top: 58px;
+    float: left;
+
+}
+
+.clear{
+    clear:both;
+}
+
+.mLogo{
+    padding-top:12px;
 }

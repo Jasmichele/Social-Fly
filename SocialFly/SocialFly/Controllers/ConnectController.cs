@@ -77,5 +77,23 @@ namespace SocialFly.Controllers
 
             return View(brands);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search(FormCollection sr)
+        {
+            var sw = sr["search"];
+
+            var socialUsers = from su in db.SocialUsers
+                              where su.SocailMName == sw
+                              select su;
+           
+                //socialUsers = socialUsers.Where(s => s.SocailMName == sr);
+
+                return View(socialUsers);
+         
+        }
     }
+
+
 }
