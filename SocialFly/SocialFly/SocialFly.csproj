@@ -266,6 +266,7 @@
     <Content Include="Content\images\instagram.jpeg" />
     <Content Include="Content\images\kamback.jpg" />
     <Content Include="Content\images\Mercback.jpg" />
+    <Content Include="Content\images\tea.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
