@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: black;
+    background-color: white !important;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,78 +25,92 @@ textarea {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #333333;
-  background-color: floralwhite;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    background-color: white;
 }
 
-.image{
+img {
+    vertical-align: middle;
+    opacity: 0.6 !important;
+    width: 125% !important;
+}
+
+/*.image {
     width: 100%;
     height: auto;
     opacity: 0.5;
+}*/
+
+.image-main {
+     vertical-align: middle;
+    opacity: 0.6 !important;
+    width: 125% !important;
+    height: auto;
 }
 
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #eed3d7;
+    color: #eed3d7;
 }
 
-.navbar{
-    background-color: cadetblue;
+.navbar {
+    background-color: white;
     color: white;
 }
 
-.font-color-white{
+.font-color-white {
     color: red;
 }
 
-.unslider-nav ol li.unslider-active, .unslider-nav ol li{
-    width:20px!important;
-    height:20px!important;
-    color:#000!important;
-    border:1px solid #000!important;
-
+.unslider-nav ol li.unslider-active, .unslider-nav ol li {
+    width: 20px !important;
+    height: 20px !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
 }
 
-.my-slider img{
-    width:250px;
-    height:auto;
+.my-slider img {
+    width: 250px;
+    height: auto;
 }
 
-.unslider ul{
-        text-align:center;
-
+.unslider ul {
+    text-align: center;
 }
 
-.my-slider .instagram img{
-    width:700px;
-    height:auto;
+.my-slider .instagram img {
+    width: 700px;
+    height: auto;
 }
 
-.socialD_left{
-   display:inline-block;
-   width:400px;
-   float:left;
+.socialD_left {
+    display: inline-block;
+    width: 400px;
+    float: left;
 }
 
-.socialD_right{
+.socialD_right {
     display: inline-block;
     width: 400px;
     margin-top: 58px;
     float: left;
-
 }
 
-.clear{
-    clear:both;
+.clear {
+    clear: both;
 }
 
-.mLogo{
-    padding-top:12px;
+.mLogo {
+    padding-top: 12px;
 }
 
-.my-slider .tea img{
-    padding-top:50px;
+.my-slider .tea img {
+    padding-top: 50px;
+}
+
+textarea.form-control {
+    height: 150px;
 }
